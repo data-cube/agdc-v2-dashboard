@@ -7,6 +7,25 @@
 
 ![Explorer Screenshot](screenshot.png)
 
+## Usage (quick-start)
+
+Assuming you already have an Open Data Cube instance, Explorer will use
+its existing settings.
+
+Install Explorer from pypi:
+
+    pip install datacube-explorer
+
+Generate summaries for all of your products
+
+    cubedash-gen --init --all
+
+Run Explorer locally:
+
+    cubedash-run
+
+It will now be viewable on [http://localhost:8090](https://localhost:8090)
+
 ## Developer Setup
 
 These directions are for running from a local folder in development. But it will run from any typical Python WSGI server. 
@@ -38,14 +57,17 @@ Other available options can be seen by running `cubedash-gen --help`.
 
 ### Run
 
-Explorer can be run using any typical python wsgi server, for example:
+A simple `cubedash-run` command is available to run Explorer locally:
+
+    $ cubedash-run
+        * Running on http://localhost:8080/ (Press CTRL+C to quit)
+
+(see `cubedash-run --help` for list of options)
+
+But Explorer can be run using any typical python wsgi server, for example gunicorn:
 
     pip install gunicorn
     gunicorn -b '127.0.0.1:8080' -w 4 cubedash:app
-
-Convenience scripts are available for running in development with hot-reload
-(`./run-dev.sh`) or gunicorn (`./run.sh`). Install the optional deployment
-dependencies for the latter: `pip install -e .[deployment]`
 
 Products will begin appearing one-by-one as the summaries are generated in the
 background.  If impatient, you can manually navigate to a product using
